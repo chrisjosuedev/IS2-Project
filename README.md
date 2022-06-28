@@ -1,6 +1,15 @@
-# IS2-Project
+# IS2 Project
+Software developed to Small Business
 
-## IS-2 Project
+## Available Scripts
 
-### npm i 
-Install Node Modules
+In the project directory, you can run:
+
+### `npm run dev`
+
+Runs the app in the development mode.
+
+The page will reload when you make changes.
+
+### `npm i`
+Install node modules
