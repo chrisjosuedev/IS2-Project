@@ -1,0 +1,27 @@
+<!-- Modal HTML -->
+<div id="newMetodoDePago" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">AGREGAR NUEVA METODO DE PAGO</h5>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form action="/transacciones/metodos-pago/new" method="post">
+                    <label> Datos de Marca </label>
+                    <div class="form-group">
+                        <div class="form-group">
+                            <input type="text" onkeyup="javascript:this.value=this.value.toUpperCase();"
+                                class="form-control to-mayus" name="desc_modopago" placeholder="Metodo de Pago" maxlength="25"
+                                autofocus required>
+                        </div>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary mt-4 float-right">
+                        <i class="fas fa-save"></i> Guardar
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

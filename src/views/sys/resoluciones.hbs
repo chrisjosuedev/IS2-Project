@@ -1,0 +1,78 @@
+<div class="container">
+  <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a href="/dashboard"> <i class="fas fa-home"></i> </a></li>
+      <li class="breadcrumb-item active" aria-current="page">Resoluciones</li>
+    </ol>
+  </nav>
+  <div class="form-group">
+    <div class="col-md-12 alert alert-warning d-none" role="alert" id="alert">
+      A simple danger alert—check it out!
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card">
+        <div class="card-header font-weight-bold">
+          <i class="fas fa-check-circle"></i> CONFIGURACION DE RESOLUCIONES
+        </div>
+        <div class="card-body">
+          <form action="" method="post" id="edit-resolucion" name="edit-resolucion">
+            <label>Resolucion CAI No.</label>
+            <div class="form-row">
+              <div class="form-group col-md-12">
+                <input type="text" class="form-control" id="cai" name="cai" maxlength="37" required>
+                <div id="msg-rtn-valid" class="valid-feedback"></div>
+              </div>
+            </div>
+            <label>No. Serie</label>
+            <div class="form-row">
+              <div class="form-group col-md-12">
+                <input type="text" class="form-control" id="serie" name="serie" maxlength="10" required>
+              </div>
+            </div>
+
+            <div class="form-row">
+
+              <div class="form-group col-md-6">
+                <label>No. Inicial</label>
+                <input type="number" class="form-control" id="num_inicial" name="num_inicial" min="0"
+                  required>
+              </div>
+              <div class="form-group col-md-6">
+                <label>No. Final</label>
+                <input type="number" class="form-control" id="num_final" name="num_final" min="1"
+                  required>
+              </div>
+            </div>
+
+            <div class="form-row">
+
+              <div class="form-group col-md-6">
+                <label>Fecha limite</label>
+                <input type="date" id="fecha_limite" name="fecha_limite" class="form-control" required>
+              </div>
+              <div class="form-group col-md-6">
+                <label>Alertar días antes</label>
+                <input type="number" min="1" name="notificar" id="notificar" class="form-control" required>
+              </div>
+            </div>
+
+            <a href="/dashboard" class="btn btn-danger float-right mb-4 mr-2">
+              <i class="fas fa-file-export"></i> Regresar
+            </a>
+
+            <button type="submit" id="procesar" class="btn btn-success float-right mb-4 mr-2">
+              <i class="fas fa-save"></i> Guardar
+            </button>
+
+          </form>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+{{!-- Scripts SRC --}}
+<script src="/js/empresa/resoluciones.js"></script>

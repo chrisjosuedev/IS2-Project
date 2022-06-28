@@ -1,0 +1,124 @@
+<div class="dash-nav dash-nav-dark">
+    <header>
+        <a href="/" class="menu-toggle">
+            <i class="fas fa-bars"></i>
+        </a>
+        <a href="/dashboard" class="spur-logo">
+            <box-icon name='shopping-bag' class="mr-2" type='solid' color='#fffafa'></box-icon>
+            <span class="logo-name">Facturacion App</span>
+        </a>
+
+    </header>
+
+    <nav class="dash-nav-list text-nav">
+        <a href="/dashboard" class="dash-nav-item">
+            <i class="fas fa-home"></i> Dashboard 
+        </a>
+
+        <div class="dash-nav-dropdown" id="articulos">
+            <a href="#" class="dash-nav-item dash-nav-dropdown-toggle">
+                <i class="fas fa-tag"></i> Artículos </a>
+            <div class="dash-nav-dropdown-menu">
+                <div class="dash-nav-dropdown">
+                    <a href="#" class="dash-nav-dropdown-item dash-nav-dropdown-toggle"> ítems </a>
+                    <div class="dash-nav-dropdown-menu">
+                        <a href="/articulos" class="dash-nav-dropdown-item">Total Inventario</a>
+                        <a href="/articulos/ropa" class="dash-nav-dropdown-item diseño">Ropa</a>
+                        <a href="/articulos/calzado" class="dash-nav-dropdown-item diseño">Calzado</a>
+                        <a href="/articulos/accesorios" class="dash-nav-dropdown-item diseño">Accesorio</a>
+                    </div>
+                </div>
+                <a href="/articulos/colores" class="dash-nav-dropdown-item diseño">Colores</a>
+                <div class="dash-nav-dropdown">
+                    <a href="#" class="dash-nav-dropdown-item dash-nav-dropdown-toggle diseño">Tipos Articulo</a>
+                    <div class="dash-nav-dropdown-menu">
+                        <a href="/articulos/tipos/ropa" class="dash-nav-dropdown-item">Tipo Ropa</a>
+                        <a href="/articulos/tipos/calzado" class="dash-nav-dropdown-item">Tipo Calzado</a>
+                        <a href="/articulos/tipos/accesorios" class="dash-nav-dropdown-item">Tipo Accesorio</a>
+                    </div>
+                </div>
+                <a href="/articulos/marcas" class="dash-nav-dropdown-item diseño">Marcas</a>
+            </div>
+        </div>
+
+        <a href="/proveedores" class="dash-nav-item" id="proveedores">
+            <i class="fas fa-archive"></i> Proveedores
+        </a>
+
+        <div class="dash-nav-dropdown" id="personas">
+            <a href="#" class="dash-nav-item dash-nav-dropdown-toggle">
+                <i class="fas fa-users"></i> Personas </a>
+            <div class="dash-nav-dropdown-menu">
+                <a href="/persona/empleados" class="dash-nav-dropdown-item">Empleados</a>
+                <a href="/persona/clientes" class="dash-nav-dropdown-item">Clientes</a>
+            </div>
+        </div>
+        <div class="dash-nav-dropdown" id="facturacion">
+            <a href="#" class="dash-nav-item dash-nav-dropdown-toggle">
+                <i class="fas fa-dollar-sign"></i> Facturación </a>
+            <div class="dash-nav-dropdown-menu">
+                <a href="/transacciones/facturas/new" class="dash-nav-dropdown-item">Facturar</a>
+                <a href="/transacciones/compras/new" class="dash-nav-dropdown-item aut">Comprar<a>
+            </div>
+        </div>
+        <div class="dash-nav-dropdown" id="analiticas">
+            <a href="#" class="dash-nav-item dash-nav-dropdown-toggle">
+                <i class="fas fa-chart-bar"></i> Analíticas </a>
+            <div class="dash-nav-dropdown-menu">
+                <a href="/analiticas/ventas" class="dash-nav-dropdown-item">Ventas</a>
+                <a href="/analiticas/compras" class="dash-nav-dropdown-item">Compras</a>
+            </div>
+        </div>
+        <div class="dash-nav-dropdown" id="consultas">
+            <a href="#" class="dash-nav-item dash-nav-dropdown-toggle">
+                <i class="fas fa-search"></i> Consultas </a>
+            <div class="dash-nav-dropdown-menu">
+                <a href="/consultas/ventas" class="dash-nav-dropdown-item">Registro Ventas</a>
+                <a href="/consultas/compras" class="dash-nav-dropdown-item">Registro Compras</a>
+            </div>
+        </div>
+        <div class="dash-nav-dropdown" id="config">
+            <a href="#" class="dash-nav-item dash-nav-dropdown-toggle">
+                <i class="fas fa-wrench"></i> Configuración </a>
+            <div class="dash-nav-dropdown-menu">
+                <a href="/config/categoria-laboral" class="dash-nav-dropdown-item">Categorias laborales</a>
+                <a href="/config/usuarios" class="dash-nav-dropdown-item editor diseño">Usuarios</a>
+            </div>
+        </div>
+        <div class="dash-nav-dropdown" id="sys">
+            <a href="#" class="dash-nav-item dash-nav-dropdown-toggle">
+                <i class="fas fa-desktop"></i> Sistema </a>
+            <div class="dash-nav-dropdown-menu">
+                <a href="/sys/general" class="dash-nav-dropdown-item editor diseño">General</a>
+            </div>
+            <div class="dash-nav-dropdown-menu">
+                <a href="/sys/resoluciones" class="dash-nav-dropdown-item editor diseño">Resoluciones</a>
+            </div>
+        </div>
+    </nav>
+</div>
+
+
+<script>
+    var tipoPrivilegio = `{{user.ID_ROL}}`
+    if (tipoPrivilegio === '3') {
+        $('#articulos').remove()
+        $('#proveedores').remove()
+        $('#personas').remove()
+        $('#analiticas').remove()
+        $('#consultas').remove()
+        $('#config').remove()
+
+        // Subdivision
+        $('.aut').remove()
+    }
+    else if (tipoPrivilegio === '2') {
+        $('#personas').remove()
+        $('#config').remove()
+    }
+    else if (tipoPrivilegio === '4') {
+        $('.diseño').remove()
+        $('#facturacion').remove()
+    }
+
+</script>

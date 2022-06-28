@@ -1,0 +1,41 @@
+<div class="card-header py-3">
+    <h6 class="m-0 font-weight-bold text-primary">Listado de Metodos de Pago</h6>
+</div>
+<div class="card-body">
+    <div class="table-responsive">
+        <table class="table table-bordered" id="dataPagos" width="100%" cellspacing="0">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Metodo de Pago</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tfoot>
+                <tr>
+                    <th>ID</th>
+                    <th>Metodo de Pago</th>
+                    <th></th>
+                </tr>
+            </tfoot>
+            <tbody>
+                {{#each modo_pago}}
+                <tr>
+                    <td> {{ID_MODOPAGO}} </td>
+                    <td> {{DESC_MODOPAGO}} </td>
+                    <td class="text-center">
+                        <button class="btn btn-primary editModoPago"
+                            data-toggle="modal" data-target="#editPayment"
+                            data-pagos="{{ID_MODOPAGO}}">
+                            <i class="fas fa-pen"></i>
+                        </button>
+                        <button id="{{ID_MODOPAGO}}" class="btn btn-danger del-item delete-payment">
+                            <i class="fa fa-trash"></i>
+                        </button>
+                    </td>
+                </tr>
+                {{/each}}
+            </tbody>
+        </table>
+    </div>
+</div>

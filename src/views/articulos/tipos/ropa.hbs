@@ -1,0 +1,39 @@
+<div class="container">
+
+    <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="/dashboard"> <i class="fas fa-home"></i> </a></li>
+            <li class="breadcrumb-item"><a href="/articulos"> Articulos </a></li>
+            <li class="breadcrumb-item"><a href="/articulos/ropa"> Ropa </a></li>
+            <li class="breadcrumb-item active" aria-current="page">Tipos de Ropa</li>
+        </ol>
+    </nav>
+
+    <h1 class="mb-4"> Tipos de Ropa </h1>
+
+    <div class="d-grid gap-2 d-md-block">
+        {{!-- Nueva Tipo Ropa Modal --}}
+        <a href="#newTipoRopa" class="btn btn-success" data-toggle="modal">
+            <i class="fas fa-plus-square mr-2"></i> Nuevo
+        </a>
+    </div>
+
+
+    <div class="container-fluid col-lg-8 mx-auto mt-4">
+        <div class="card shadow mb-4">
+            {{> tipos/ropa/list-ropa }}
+        </div>
+    </div>
+</div>
+
+
+{{!-- Modales --}}
+{{!-- Agregar Marca --}}
+{{> tipos/ropa/add }}
+{{> tipos/ropa/edit }}
+
+
+{{!-- Scripts SRC --}}
+<script src="/js/tipos/ropa.js"></script>
+{{!-- Level Custom --}}
+<script src="/js/datatables/data-ropa.js"></script>

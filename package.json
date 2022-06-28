@@ -1,0 +1,31 @@
+{
+  "name": "magistral-store",
+  "version": "2.0.0",
+  "description": "Sistema de Gestion de Tienda de Ropa",
+  "scripts": {
+    "start": "node src/index.js",
+    "dev": "nodemon src/index.js"
+  },
+  "keywords": [],
+  "author": "Cristhian Martínez",
+  "license": "MIT",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "connect-flash": "^0.1.1",
+    "date-format": "^4.0.4",
+    "express": "^4.17.3",
+    "express-handlebars": "^6.0.2",
+    "express-mysql-session": "^2.1.7",
+    "express-session": "^1.17.2",
+    "express-validator": "^6.14.0",
+    "morgan": "^1.10.0",
+    "mysql": "^2.18.1",
+    "passport": "^0.5.2",
+    "passport-local": "^1.0.0",
+    "pdfkit": "^0.13.0",
+    "pdfkit-construct": "^1.2.3"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.15"
+  }
+}

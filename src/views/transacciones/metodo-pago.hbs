@@ -1,0 +1,39 @@
+<div class="container">
+
+    <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="/dashboard"> <i class="fas fa-home"></i> </a></li>
+            <li class="breadcrumb-item active" aria-current="page"> Metodos de Pago </li>
+        </ol>
+    </nav>
+
+
+    <h1 class="mb-4"> Métodos de Pago </h1>
+
+    <div class="d-grid gap-2 d-md-block">
+        {{!-- Nuevo Metodo de Pago Modal --}}
+        <a href="#newMetodoDePago" class="btn btn-success btn-payment" data-toggle="modal">
+            <i class="fas fa-plus-square mr-2"></i> Nuevo
+        </a>
+    </div>
+
+
+    <div class="container-fluid col-lg-8 mx-auto mt-4">
+        <div class="card shadow mb-4">
+            {{> metodos-pago/list-metodo-pago }}
+        </div>
+    </div>
+</div>
+
+
+{{!-- Modales --}}
+{{!-- Agregar y Editar Metodo de Pago --}}
+{{> metodos-pago/add }}
+{{> metodos-pago/edit }}
+
+
+{{!-- Scripts SRC --}}
+<script src="/js/metodos-pago/metodos-pago.js"></script>
+
+{{!-- Level Custom --}}
+<script src="/js/datatables/data-pagos.js"></script>

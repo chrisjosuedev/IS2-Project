@@ -1,0 +1,30 @@
+<!-- Modal HTML -->
+<div id="newCategoriaLaboral" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">AGREGAR NUEVA CATEGORIA LABORAL</h5>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form action="/config/categoria-laboral/new" method="post">
+                    <label> Datos Categoria Laboral </label>
+                    <div class="form-group">
+                        <input type="text" onkeyup="javascript:this.value=this.value.toUpperCase();"
+                            class="form-control to-mayus" maxlength="25" name="descripcion_categoria" placeholder="Descripción"
+                            autofocus required>
+                    </div>
+                    <div class="form-group">
+                        <input type="number" min="0" step="0.01" class="form-control" name="salario"
+                            placeholder="Salario" required>
+                    </div>
+
+
+                    <button type="submit" class="btn btn-primary mt-4 float-right">
+                        <i class="fas fa-save"></i> Guardar
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

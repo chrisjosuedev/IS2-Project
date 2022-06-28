@@ -1,0 +1,174 @@
+<div class="container-fluid d-none" id="dashboard_main">
+
+    <!-- Page Heading -->
+    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+        <h1 class="mb-4">Dashboard</h1>
+    </div>
+
+    <!-- Content Row -->
+    <div class="row">
+
+        <!-- Ventas en el dia -->
+        <div class="col-xl-3 col-md-6 mb-4">
+            <div class="card border-left-primary shadow h-100 py-2">
+                <div class="card-body">
+                    <div class="row no-gutters align-items-center">
+                        <div class="col mr-2">
+                            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
+                                Ventas en el dia</div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800">
+                                L. {{ventasAlDia.Total}}
+                            </div>
+                        </div>
+                        <div class="col-auto">
+                            <i class="fas fa-calendar fa-2x text-gray-300"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Ventas en el Mes -->
+        <div class="col-xl-3 col-md-6 mb-4">
+            <div class="card border-left-success shadow h-100 py-2">
+                <div class="card-body">
+                    <div class="row no-gutters align-items-center">
+                        <div class="col mr-2">
+                            <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
+                                Ventas en el mes
+                            </div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800">
+                                L. {{ventasAlMes.Total}}
+                            </div>
+                        </div>
+                        <div class="col-auto">
+                            <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Compras del Dia -->
+        <div class="col-xl-3 col-md-6 mb-4">
+            <div class="card border-left-info shadow h-100 py-2">
+                <div class="card-body">
+                    <div class="row no-gutters align-items-center">
+                        <div class="col mr-2">
+                            <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Comprado en el día
+                            </div>
+                            <div class="row no-gutters align-items-center">
+                                <div class="col-auto">
+                                    <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">
+                                        L. {{compraAlDia.Total}}
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="col-auto">
+                            <i class="fas fa-clipboard-list fa-2x text-gray-300"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Cantidad de Clientes de la Tienda -->
+        <div class="col-xl-3 col-md-6 mb-4">
+            <div class="card border-left-warning shadow h-100 py-2">
+                <div class="card-body">
+                    <div class="row no-gutters align-items-center">
+                        <div class="col mr-2">
+                            <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
+                                Clientes</div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800">
+                                {{totalClientes.TotalClientes}}
+
+                            </div>
+                        </div>
+                        <div class="col-auto">
+                            <i class="fas fa-user fa-2x text-gray-300"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Content Row -->
+
+    <div class="row">
+
+        <!-- Area Chart -->
+        <div class="col-xl-8 col-lg-7">
+            <div class="card shadow mb-4">
+                <!-- Card Header - Dropdown -->
+                <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                    <h6 class="m-0 font-weight-bold text-primary">Ventas de los ultimos 5 días</h6>
+                </div>
+                <!-- Card Body -->
+                <div class="card-body">
+                    <div class="card-body">
+                        <canvas id="myChartVentasDiarias" width="400" height="200"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Pie Chart -->
+        <div class="col-xl-4 col-lg-5">
+            <div class="card shadow mb-4">
+                <!-- Card Header - Dropdown -->
+                <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                    <h6 class="m-0 font-weight-bold text-primary">Stock general</h6>
+
+                </div>
+                <!-- Card Body -->
+                <div class="card-body">
+                    <div class="chart-body">
+                        <canvas id="myChartStock"></canvas>
+                    </div>
+                </div>
+                <div class="mb-4 text-center small">
+                    <span>
+                        Nota. Articulos mostrados son pronto a acabarse
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</div>
+<!-- AUTOR -->
+<div class="container-fluid d-none" id="dashboard_autor">
+    <div class="row mb-4">
+        <!-- Dashboard Para Rol de AUTOR -->
+        <div class="text-center">
+            <div class="container mx-auto">
+                <img class="autor" src="/img/autor.png" alt="autor">
+            </div>
+            <h1 class="mb-4">¡Bienvenido!</h1>
+
+            <a href="/transacciones/facturas/new">&larr; Comenzar a Facturar...</a>
+        </div>
+    </div>
+</div>
+
+<!-- Page level plugins -->
+<script src="/js/analiticas/dashboard.js"></script>
+
+<script>
+    var tipoPrivilegio = `{{user.ID_ROL}}`
+    // Autor
+    if (tipoPrivilegio === '3') {
+        $('#dashboard_main').remove()
+        $('#dashboard_autor').removeClass('d-none')
+    }
+    else {
+        $('#dashboard_autor').remove()
+        $('#dashboard_main').removeClass('d-none')
+    }
+    
+</script>

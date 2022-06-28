@@ -1,0 +1,55 @@
+* {
+  font-family: "Inter";
+}
+
+.logo-name {
+  font-size: 1rem;
+}
+
+.text-nav {
+  font-size: 0.95rem;
+}
+
+.modal {
+  color: black;
+}
+
+.to-mayus {
+  text-transform: uppercase;
+}
+
+.btn-group, .btn-group-vertical {
+  position: absolute !important;
+}
+
+.swal2-popup {
+  font-size: 0.8rem !important;
+  font-weight: 500 !important;
+}
+
+.signin {
+  font-size: .9rem;
+  padding: 1.2rem 1.1rem
+}
+
+.brand {
+  font-size: 0.9rem;
+}
+
+.login {
+  background-color:#3F84FC;
+}
+
+.not-found {
+  width: 12.5rem;
+}
+
+.autor {
+  width: 21rem;
+}
+
+.profile {
+  height: 2rem;
+  width: 2rem;
+}
+

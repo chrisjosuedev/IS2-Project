@@ -1,0 +1,41 @@
+<div class="card-header py-3">
+    <h6 class="m-0 font-weight-bold text-primary">Listado de Tipos de Calzado</h6>
+</div>
+<div class="card-body">
+    <div class="table-responsive">
+        <table class="table table-bordered" id="dataTiposCalzado" width="100%" cellspacing="0">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Tipo de Calzado</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tfoot>
+                <tr>
+                    <th>ID</th>
+                    <th>Tipo de Calzado</th>
+                    <th></th>
+                </tr>
+            </tfoot>
+            <tbody>
+                {{#each tipos_calzado}}
+                <tr>
+                    <td> {{ID_TIPOCALZADO}} </td>
+                    <td> {{DESC_TIPOCALZADO}} </td>
+                    <td class="text-center">
+                        <button class="btn btn-primary editTipoCalzado"
+                            data-toggle="modal" data-target="#editTipoCalzado"
+                            data-tcalzado="{{ID_TIPOCALZADO}}">
+                            <i class="fas fa-pen"></i>
+                        </button>
+                        <button id="{{ID_TIPOCALZADO}}" class="btn btn-danger del-item delete-tcalzado">
+                            <i class="fa fa-trash"></i>
+                        </button>
+                    </td>
+                </tr>
+                {{/each}}
+            </tbody>
+        </table>
+    </div>
+</div>

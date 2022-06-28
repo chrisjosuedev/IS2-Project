@@ -1,0 +1,39 @@
+<div class="container">
+
+    <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="/dashboard"> <i class="fas fa-home"></i> </a></li>
+            <li class="breadcrumb-item"><a href="/articulos"> Articulos </a></li>
+            <li class="breadcrumb-item"><a href="/articulos/accesorios"> Accesorios </a></li>
+            <li class="breadcrumb-item active" aria-current="page">Tipos de Accesorio</li>
+        </ol>
+    </nav>
+
+
+    <h1 class="mb-4"> Tipos de Accesorios </h1>
+
+    <div class="d-grid gap-2 d-md-block">
+        {{!-- Nueva Tipo Accesorio Modal --}}
+        <a href="#newTipoAccesorio" class="btn btn-success" data-toggle="modal">
+            <i class="fas fa-plus-square mr-2"></i> Nuevo
+        </a>
+    </div>
+
+
+    <div class="container-fluid col-lg-8 mx-auto mt-4">
+        <div class="card shadow mb-4">
+            {{> tipos/accesorios/list-accesorios }}
+        </div>
+    </div>
+</div>
+
+
+{{!-- Modales --}}
+{{!-- Agregar Marca --}}
+{{> tipos/accesorios/add }}
+{{> tipos/accesorios/edit }}
+
+{{!-- Scripts SRC --}}
+<script src="/js/tipos/accesorios.js"></script>
+{{!-- Level Custom --}}
+<script src="/js/datatables/data-accesorios.js"></script>

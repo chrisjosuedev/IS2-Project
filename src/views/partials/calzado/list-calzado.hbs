@@ -1,0 +1,64 @@
+<div class="card-header py-3">
+    <h6 class="m-0 font-weight-bold text-primary">Listado de Articulos Tipo Calzado</h6>
+</div>
+<div class="card-body">
+    <div class="table-responsive">
+
+        <table class="table table-bordered" id="dataCalzadoArticulo" width="100%" cellspacing="0">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Descripción</th>
+                    <th>Talla</th>
+                    <th>Marca</th>
+                    <th>Linea</th>
+                    <th>Color</th>
+                    <th>Tipo</th>
+                    <th>Stock</th>
+                    <th>Precio Unit.</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tfoot>
+                <tr>
+                    <th>ID</th>
+                    <th>Descripción</th>
+                    <th>Talla</th>
+                    <th>Marca</th>
+                    <th>Linea</th>
+                    <th>Color</th>
+                    <th>Tipo</th>
+                    <th>Stock</th>
+                    <th>Precio Unit.</th>
+                    <th></th>
+                </tr>
+            </tfoot>
+            <tbody>
+                {{#each calzado}}
+                <tr>
+                    <td> {{ID_ARTICULO}} </td>
+                    <td> {{DESCRIPCION}} </td>
+                    <td> {{TALLA}} </td>
+                    <td> {{NOMBRE_MARCA}} </td>
+                    <td> {{DESC_LINEA}} </td>
+                    <td> {{DESC_COLOR}} </td>
+                    <td> {{DESC_TIPOCALZADO}} </td>
+                    <td> {{STOCK}} </td>
+                    <td>L. {{PRECIO_UNIT}} </td>
+                    <td class="text-center">
+                        <button class="btn btn-primary editCalzadoArt"
+                            data-toggle="modal" data-target="#editCalzadoArt"
+                            data-calzadoart="{{ID_ARTICULO}}">
+                            <i class="fas fa-pen"></i>
+                        </button>
+                        <button id="{{ID_ARTICULO}}" class="btn btn-danger del-item mt-2 delete-calzado">
+                            <i class="fa fa-trash"></i>
+                        </button>
+                    </td>
+                </tr>
+                {{/each}}
+            </tbody>
+        </table>
+
+    </div>
+</div>
