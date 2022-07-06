@@ -40,7 +40,7 @@
               <th scope="col">N° Factura</th>
               <th scope="col">Cliente</th>
               <th scope="col">Fecha</th>
-              <th scope="col">Modo Pago</th>
+              <th scope="col">Estatus</th>
               <th scope="col"></th>
             </tr>
           </thead>
@@ -57,11 +57,14 @@
                 {{format FECHA}}
               </td>
               <td>
-                {{DESC_MODOPAGO}}
+                Procesada/Anulada
               </td>
               <td class="text-right">
                 <a href="/consultas/ventas/detalle/{{ID_FACTURA}}" class="btn btn-secondary">
                   <i class="fas fa-eye"></i>
+                </a>
+                <a href="/transacciones/facturas/anular/{{ID_FACTURA}}" class="btn btn-warning">
+                  <i class="fas fa-ban"></i>
                 </a>
               </td>
             </tr>

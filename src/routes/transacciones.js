@@ -17,12 +17,12 @@ router.get('/metodos-pago/delete/:id', isLoggedIn, transaccionCont.deleteMetodoP
 /** COMPRAS **/
 router.get('/compras/new', isLoggedIn, transaccionCont.newCompra)
 
-router.post('/compras/agregar', isLoggedIn, transaccionCont.agregarCompra)
+router.post('/compras/agregar', isLoggedIn, transaccionCont.addNewCompra)
 
 /** FACTURAS **/
 router.get('/facturas/new', isLoggedIn, transaccionCont.newFactura)
 
-router.post('/facturas/agregar', isLoggedIn, transaccionCont.agregarFactura)
+router.post('/facturas/agregar', isLoggedIn, transaccionCont.addNewFactura)
 
 module.exports = router
 

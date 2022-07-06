@@ -95,24 +95,25 @@
 
                                 </div>
 
-                                <div class="col-md-2">
-                                    <input type="number" class="form-control" id="contadorFilas" min="0" value="0"
-                                        name="filas" hidden>
-                                </div>
-
                             </div>
                         </div>
 
 
                         <!-- Boton Save -->
+                        <div class="text-right">
+                            <button type="button" id="btn-agregar" class="btn btn-success">
+                                <i class="far fa-plus-square"></i> Agregar Producto
+                            </button>
+                            
+                            <button type="submit" class="btn btn-primary">
+                                <i class="fas fa-file-invoice-dollar"></i> Procesar
+                            </button>
 
-                        <button type="submit" class="btn btn-warning float-right mb-4 mr-2">
-                            <i class="fas fa-file-invoice-dollar"></i> Procesar
-                        </button>
+                            <a href="/transacciones/compras/anular" class="btn btn-warning button newFact">
+                                <i class="fas fa-ban"></i> Anular Reciente
+                            </a>
+                        </div>
 
-                        <button type="button" id="btn-agregar" class="btn btn-success float-right mb-4 mr-2">
-                            <i class="far fa-plus-square"></i> Agregar Producto
-                        </button>
 
                         {{!-- Tablas ---}}
                         <div class="col-md-12 mt-5">
