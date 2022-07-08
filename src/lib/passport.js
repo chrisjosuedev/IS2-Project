@@ -38,14 +38,12 @@ passport.serializeUser((user, done) => {
 passport.deserializeUser(async (id, done) => {
   const serQuery = `
   SELECT persona.NOMBRE_PERSONA as NOMBRE, persona.APELLIDO_PERSONA as APELLIDO, 
-  persona.SEXO, usuario.*, rol_users.DESC_ROL as ROL,
-  categoria_laboral.DESCRIPCION_CATEGORIA, empleado.FECHA_CONTRATACION
+  usuario.*
   FROM persona
   left join empleado on persona.ID_PERSONA = empleado.ID_PERSONA
   inner join usuario on usuario.ID_EMPLEADO = empleado.ID_EMPLEADO
-  inner join categoria_laboral on empleado.ID_CATEGORIA = categoria_laboral.ID_CATEGORIA
-  inner join rol_users on usuario.ID_ROL = rol_users.ID_ROL
-  WHERE (persona.ID_PERSONA IN (SELECT empleado.ID_PERSONA FROM empleado)) AND usuario.ID_EMPLEADO = ?
+  WHERE (persona.ID_PERSONA IN (SELECT empleado.ID_PERSONA FROM empleado)) AND 
+  usuario.ID_EMPLEADO = ?
   `
   const rows = await myConn.query(serQuery, [id]);
   done(null, rows[0]);

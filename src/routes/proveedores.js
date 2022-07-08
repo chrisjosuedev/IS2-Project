@@ -1,10 +1,10 @@
 const express = require('express')
 const router = express.Router()
 const proveedoresController = require('../controllers/proveedoresController')
-const { isLoggedIn, levelAccess } = require('../lib/auth')
+const { isLoggedIn } = require('../lib/auth')
 
 // Proveedores 
-router.get('/', isLoggedIn, levelAccess, proveedoresController.listProveedores)
+router.get('/', isLoggedIn, proveedoresController.listProveedores)
 
 /* --- POST DE PROVEEDORES --- */
 router.post('/new', isLoggedIn, proveedoresController.newProveedor)

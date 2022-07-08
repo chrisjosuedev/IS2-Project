@@ -17,7 +17,9 @@ module.exports = {
     else {
         return next()
     }
-  },
+  }
+  
+  /*,
 
   levelAccess(req, res, next){
     if (req.user.ID_ROL === 3) {
@@ -26,5 +28,6 @@ module.exports = {
         return next()
     }
   }
+  */
 
 }

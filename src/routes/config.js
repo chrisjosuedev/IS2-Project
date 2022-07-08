@@ -37,7 +37,7 @@ router.get('/usuarios/:username', isLoggedIn, confController.getEmpleadoByUser)
 router.post('/usuarios/edit/:username', isLoggedIn, confController.editUser)
 
 // --------- PERFIL
-router.get('/mi-perfil', isLoggedIn, confController.verMiPerfil)
+router.get('/mi-perfil/:id', isLoggedIn, confController.verMiPerfil)
 
 router.get('/mi-perfil/edit/:username', isLoggedIn, confController.getEditPerfil)
 

@@ -52,7 +52,7 @@ dashboardController.ventasDiarias = async (req, res) => {
   SELECT factura.FECHA, (sum(CANTIDAD * PRECIO_UNIT) + (sum(CANTIDAD * PRECIO_UNIT) * 0.15)) as Total
   FROM factura_detalle
   INNER JOIN factura ON factura.ID_FACTURA = factura_detalle.ID_FACTURA
-  group by factura.FECHA
+  group by day(factura.FECHA)
   order by factura.FECHA DESC
   LIMIT 5;`;
 
