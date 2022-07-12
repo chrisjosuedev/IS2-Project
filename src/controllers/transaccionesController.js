@@ -195,4 +195,14 @@ transaccionController.newFactura = async (req, res) => {
   res.render("transacciones/facturar", { metodopago, departamentos });
 };
 
+/** Arqueos */
+transaccionController.newArqueo = async (req, res) => {
+  res.render('transacciones/arqueos')
+}
+
+/** Devoluciones **/
+transaccionController.newDevolucion = async (req, res) => {
+  res.render('transacciones/devoluciones')
+}
+
 module.exports = transaccionController;

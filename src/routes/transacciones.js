@@ -24,5 +24,11 @@ router.get('/facturas/new', /*isLoggedIn,*/  transaccionCont.newFactura)
 
 router.post('/facturas/agregar', /*isLoggedIn,*/  transaccionCont.addNewFactura)
 
+/** Arqueos **/
+router.get('/arqueos/nuevo', transaccionCont.newArqueo)
+
+/* Devoluciones */
+router.get('/devoluciones/nuevo', transaccionCont.newDevolucion)
+
 module.exports = router
 

@@ -1,0 +1,139 @@
+<div class="container">
+  <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a href="/dashboard"> <i class="fas fa-home"></i> </a></li>
+      <li class="breadcrumb-item active" aria-current="page">Arqueo Diario</li>
+    </ol>
+  </nav>
+  <div class="form-group">
+    <div class="col-md-12 alert alert-warning d-none" role="alert" id="alert">
+      A simple danger alert—check it out!
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card">
+        <div class="card-header font-weight-bold">
+          <i class="fas fa-money-bill"></i> ARQUEO DIARIO
+        </div>
+        <div class="card-body">
+          <form action="" method="post" id="edit-resolucion" name="edit-resolucion">
+            <label> <b> Acumulado </b></label>
+            <div class="form-row">
+
+              <div class="form-group col-md-6">
+                <label>Fecha</label>
+                <input type="date" id="fecha_limite" name="fecha_limite" class="form-control">
+              </div>
+              <div class="form-group col-md-6">
+                <label>Saldo en Caja</label>
+                <input type="number" min="0" class="form-control" id="_" name="cai" maxlength="37" disabled>
+              </div>
+            </div>
+
+            <label> <b> Contador </b></label>
+
+
+            <div class="form-row">
+              <div class="form-group col-md-2">
+                <label>L. 500</label>
+                <input type="number" class="form-control" id="num_inicial" name="num_inicial" min="0" required>
+              </div>
+              <div class="form-group col-md-2">
+                <label>L. 200</label>
+                <input type="number" class="form-control" id="num_inicial" name="num_inicial" min="0" required>
+              </div>
+              <div class="form-group col-md-2">
+                <label>L. 100</label>
+                <input type="number" class="form-control" id="num_inicial" name="num_inicial" min="0" required>
+              </div>
+              <div class="form-group col-md-2">
+                <label>L. 50</label>
+                <input type="number" class="form-control" id="num_inicial" name="num_inicial" min="0" required>
+              </div>
+              <div class="form-group col-md-2">
+                <label>L. 20</label>
+                <input type="number" class="form-control" id="num_inicial" name="num_inicial" min="0" required>
+              </div>
+              <div class="form-group col-md-2">
+                <label>L. 10</label>
+                <input type="number" class="form-control" id="num_inicial" name="num_inicial" min="0" required>
+              </div>
+            </div>
+            <div class="form-row">
+
+              <div class="form-group col-md-2">
+                <label>L. 5</label>
+                <input type="number" class="form-control" id="num_inicial" name="num_inicial" min="0" required>
+              </div>
+              <div class="form-group col-md-2">
+                <label>L. 2</label>
+                <input type="number" class="form-control" id="num_inicial" name="num_inicial" min="0" required>
+              </div>
+              <div class="form-group col-md-2">
+                <label>L. 1</label>
+                <input type="number" class="form-control" id="num_inicial" name="num_inicial" min="0" required>
+              </div>
+              <div class="form-group col-md-2">
+                <label>0.50 ¢</label>
+                <input type="number" class="form-control" id="num_inicial" name="num_inicial" min="0" required>
+              </div>
+              <div class="form-group col-md-2">
+                <label>0.20 ¢</label>
+                <input type="number" class="form-control" id="num_inicial" name="num_inicial" min="0" required>
+              </div>
+              <div class="form-group col-md-2">
+                <label>0.10 ¢</label>
+                <input type="number" class="form-control" id="num_inicial" name="num_inicial" min="0" required>
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-group col-md-2">
+                <label>0.05 ¢</label>
+                <input type="number" class="form-control" id="num_inicial" name="num_inicial" min="0" required>
+              </div>
+              <div class="form-group col-md-2">
+                <label>0.02 ¢</label>
+                <input type="number" class="form-control" id="num_inicial" name="num_inicial" min="0" required>
+              </div>
+              <div class="form-group col-md-2">
+                <label>0.01 ¢</label>
+                <input type="number" class="form-control" id="num_inicial" name="num_inicial" min="0" required>
+              </div>
+              <div class="form-group col-md-2">
+                <label>Total en Efectivo.</label>
+                <input type="number" class="form-control" id="num_inicial" name="num_inicial" min="0" disabled required>
+              </div>
+            </div>
+            <div class="form-row">
+
+            </div>
+
+
+
+
+            <a href="/dashboard" class="btn btn-danger float-right mb-4 mr-2">
+              <i class="fas fa-file-export"></i> Regresar
+            </a>
+
+            <button type="submit" id="procesar" class="btn btn-success float-right mb-4 mr-2">
+              <i class="fas fa-save"></i> Cerrar Diario
+            </button>
+
+            <button class="btn btn-warning float-right mb-4 mr-2">
+              <i class="fas fa-minus-circle"></i> Todo a Cero
+            </button>
+
+            <button class="btn btn-primary float-right mb-4 mr-2">
+              <i class="fas fa-calculator">
+              </i> Calcular
+            </button>
+
+
+          </form>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
