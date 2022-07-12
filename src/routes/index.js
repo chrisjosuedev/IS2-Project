@@ -1,10 +1,10 @@
 const express = require('express')
 const router = express.Router()
 const passport = require('passport')
-const { isLoggedInLogin } = require('../lib/auth')
+// const { isLoggedInLogin } = require('../lib/auth')
 
 // Login
-router.get('/', isLoggedInLogin,  (req, res) => {
+router.get('/', /*isLoggedIn,*/   (req, res) => {
     res.render('auth/signin')
 })
 

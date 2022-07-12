@@ -18,7 +18,7 @@
     <link rel="stylesheet" href="/css/bootstrap.min.css" rel="stylesheet">
     {{!-- Datatable References ---}}
     {{!-- Custom styles for this template ---}}
-    
+
     <link href="/css/sb-admin-2.min.css" rel="stylesheet">
     <link href="/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
     <link rel="stylesheet" type="text/css"
@@ -30,7 +30,7 @@
     {{!-- CSS Custom ---}}
     <link rel="stylesheet" href="/css/styles.css">
 
-    
+
 
     {{!-- Font Awesome --}}
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css"
@@ -49,6 +49,8 @@
 </head>
 
 <body id="page-top">
+
+    {{!--
     {{#if user}}
 
     <div id="wrapper">
@@ -82,7 +84,33 @@
         </main>
 
     </div>
-    <!-- Footer -->
+
+    --}}
+
+    <!-- Temporary Main -->
+    <div id="wrapper">
+        {{> sidebar }}
+        <div id="content-wrapper" class="d-flex flex-column">
+            <div id="content">
+                {{> navbar }}
+                <main class="container-fluid">
+                    {{> message }}
+                    {{{ body }}}
+                </main>
+            </div>
+
+            <!-- Footer -->
+            <footer class="sticky-footer bg-white">
+                <div class="container my-auto">
+                    <div class="copyright text-center my-auto">
+                        <span>Derechos Reservados &copy; 2022</span>
+                    </div>
+                </div>
+            </footer>
+        </div>
+    </div>
+
+    <!-- Footer 
     <footer class="sticky-footer bg-white">
         <div class="container my-auto">
             <div class="copyright text-center my-auto">
@@ -90,9 +118,11 @@
             </div>
         </div>
     </footer>
+-->
 
-
+    {{!--
     {{/if}}
+    --}}
 
     {{!-- JQuery --}}
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"

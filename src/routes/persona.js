@@ -1,45 +1,45 @@
 const express = require('express')
 const router = express.Router()
 const personController = require('../controllers/personaController')
-const { isLoggedIn } = require('../lib/auth')
+// const { isLoggedIn } = require('../lib/auth')
 
 // Clientes
-router.get('/clientes', isLoggedIn, personController.listClientes)
+router.get('/clientes', /*isLoggedIn,*/  personController.listClientes)
 
 /* POST CLIENTES */
-router.post('/clientes/new', isLoggedIn, personController.newCliente)
+router.post('/clientes/new', /*isLoggedIn,*/  personController.newCliente)
 
 // Edit Clientes
-router.get('/clientes/:id', isLoggedIn, personController.getClienteById)
+router.get('/clientes/:id', /*isLoggedIn,*/  personController.getClienteById)
 
-router.post('/clientes/edit/:id', isLoggedIn, personController.editCliente)
+router.post('/clientes/edit/:id', /*isLoggedIn,*/  personController.editCliente)
 
 // Eliminar
-router.get('/clientes/delete/:id', isLoggedIn, personController.deleteCliente)
+router.get('/clientes/delete/:id', /*isLoggedIn,*/  personController.deleteCliente)
 
 // Empleados
-router.get('/empleados', isLoggedIn, personController.listEmpleados)
+router.get('/empleados', /*isLoggedIn,*/  personController.listEmpleados)
 
 /* POST EMPLEADOS */
-router.post('/empleados/new', isLoggedIn, personController.newEmpleado)
+router.post('/empleados/new', /*isLoggedIn,*/  personController.newEmpleado)
 
 // Edit Empleado
-router.get('/empleados/:id', isLoggedIn, personController.getEmpleadoById)
+router.get('/empleados/:id', /*isLoggedIn,*/  personController.getEmpleadoById)
 
-router.post('/empleados/edit/:id', isLoggedIn, personController.editEmpleado)
+router.post('/empleados/edit/:id', /*isLoggedIn,*/  personController.editEmpleado)
 
 // Eliminar
-router.get('/empleados/delete/:id', isLoggedIn, personController.deleteEmpleado)
+router.get('/empleados/delete/:id', /*isLoggedIn,*/  personController.deleteEmpleado)
 
 // -- GET Empleados JSON
 //router.get('/empleados/:id', personController.getEmpleadobyIdPersona)
 
 
 // Busqueda de Persona
-router.get('/general/:id', isLoggedIn, personController.getPersonaById)
+router.get('/general/:id', /*isLoggedIn,*/  personController.getPersonaById)
 
 
 // Lugares JSON
-router.get('/ciudad/:id', isLoggedIn, personController.getDeptoByCiudad)
+router.get('/ciudad/:id', /*isLoggedIn,*/  personController.getDeptoByCiudad)
 
 module.exports = router
