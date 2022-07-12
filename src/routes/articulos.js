@@ -9,6 +9,9 @@ router.get('/', /*isLoggedIn,*/  articulosController.listArticulos)
 
 router.get('/general/:id', /*isLoggedIn,*/  articulosController.getArtById)
 
+/* Garantias */
+router.get('/garantias', articulosController.getGarantias)
+
 // Ropa
 router.get('/ropa',/*isLoggedIn,*/  articulosController.listRopaArticulos)
 

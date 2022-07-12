@@ -1,5 +1,5 @@
 $(function () {
-  $('#dataItems').DataTable({
+  $('#dataGarantias').DataTable({
     language: {
         "paginate": {
             "first": "Primero",
@@ -9,7 +9,7 @@ $(function () {
         },
         "search": "Buscar:",
         "lengthMenu": "Mostrar _MENU_ registros",
-        "emptyTable": "No existen articulos registrados",
+        "emptyTable": "No existen garantias registrados",
         "zeroRecords": "No se encontraron coincidencias",
         "info": "Mostrando _START_ a _END_ de _TOTAL_ entradas",
         "infoEmpty": "Mostrando 0 a 0 de 0 entradas",

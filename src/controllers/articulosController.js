@@ -776,4 +776,9 @@ artController.listTiposAccesorios = async (req, res) => {
 
 /* Fin Tipos de Articulos */
 
+
+artController.getGarantias = async (req, res) => {
+    res.render('articulos/garantias')
+}
+
 module.exports = artController

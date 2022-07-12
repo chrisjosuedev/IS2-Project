@@ -54,6 +54,20 @@
                         </div>
 
 
+                        <div class="form-row">
+
+                            <div class="form-group col-md-6">
+                                <input type="text" class="form-control" id="cai" name="cai" maxlength="37"
+                                    placeholder="CAI" required>
+                                <div id="msg-rtn-valid" class="valid-feedback"></div>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <input type="number" class="form-control" id="num_inicial" name="num_inicial" min="0"
+                                    placeholder="No. Factura" required>
+                            </div>
+                        </div>
+
+
                         <div class="form-group">
                             <label>Artículos</label>
 
@@ -104,7 +118,7 @@
                             <button type="button" id="btn-agregar" class="btn btn-success">
                                 <i class="far fa-plus-square"></i> Agregar Producto
                             </button>
-                            
+
                             <button type="submit" class="btn btn-primary">
                                 <i class="fas fa-file-invoice-dollar"></i> Procesar
                             </button>
@@ -114,6 +128,9 @@
                             </a>
                         </div>
 
+                        <div>
+                            Nota: Resolucion CAI verificada por Proveedor.
+                        </div>
 
                         {{!-- Tablas ---}}
                         <div class="col-md-12 mt-5">

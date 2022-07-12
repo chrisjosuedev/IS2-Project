@@ -1,0 +1,38 @@
+<div class="container">
+    <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="/dashboard"> <i class="fas fa-home"></i> </a></li>
+            <li class="breadcrumb-item active" aria-current="page">Articulos</li>
+        </ol>
+    </nav>
+    <h1 class="mb-4"> Garantias </h1>
+
+    <div class="d-grid gap-2 d-md-block">
+        <div>
+            {{!-- Nuevo Articulo Modal --}}
+            <a href="#newGarantia" class="btn btn-success diseño" id="#addGarantia addGar" data-toggle="modal">
+                <i class="fas fa-plus-square mr-2"></i> Nuevo
+            </a>
+        </div>
+
+    </div>
+
+
+    <div class="container-fluid mt-5">
+        <div class="card shadow mb-4">
+            {{> garantias/list-garantias }}
+        </div>
+    </div>
+</div>
+
+
+{{!-- Modales --}}
+{{!-- Agregar Articulo --}}
+{{> garantias/add }}
+
+{{!-- Scripts SRC --}}
+
+
+<script src="/js/items/items.js"></script>
+{{!-- Level Custom --}}
+<script src="/js/datatables/data-garantias.js"></script>
