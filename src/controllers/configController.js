@@ -182,7 +182,7 @@ confController.getEditPerfil = async (req, res) => {
   const { username } = req.body;
   const users = await myConn.query("SELECT * FROM usuario WHERE username = ?", [
     username,
-  ]);
+  ]); 
   res.render("config/password-edit", {
     users: users[0],
   });

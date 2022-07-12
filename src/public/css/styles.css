@@ -54,3 +54,11 @@
   width: 2rem;
 }
 
+.forgot {
+  color: #202020b0;
+}
+
+.forgot:hover {
+  color: #202020;
+}
+

@@ -94,4 +94,9 @@ sysController.editInfoResolucion = async (req, res) => {
 }
 
 
+/* Tickets */
+sysController.tickets = async (req, res) => {
+  res.render('sys/tickets')
+}
+
 module.exports = sysController

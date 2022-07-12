@@ -24,4 +24,7 @@ router.get('/resoluciones/detalle', /*isLoggedIn,*/  sysCont.detalleResolucion)
 router.post('/resoluciones/edit/:id', /*isLoggedIn,*/  sysCont.editInfoResolucion)
 
 
+/* Tickets */
+router.get('/tickets', sysCont.tickets)
+
 module.exports = router

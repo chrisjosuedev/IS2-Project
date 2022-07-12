@@ -1,10 +1,10 @@
 const express = require('express')
 const router = express.Router()
 const passport = require('passport')
-// const { isLoggedInLogin } = require('../lib/auth')
+const { isLoggedInLogin } = require('../lib/auth')
 
 // Login
-router.get('/', /*isLoggedIn,*/   (req, res) => {
+router.get('/', /*isLoggedInLogin,*/ (req, res) => {
     res.render('auth/signin')
 })
 
@@ -20,6 +20,11 @@ router.post('/', (req, res, next) => {
 router.get('/logout', (req, res) => {
     req.logOut();
     res.redirect('/')
+})
+
+// Forgot Password
+router.get('/loginHelp', (req, res) => {
+    res.render('auth/forgot-password')
 })
 
 module.exports = router
