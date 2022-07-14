@@ -5,20 +5,6 @@ const confController = require('../controllers/configController')
 
 // Settings
 
-// /categoria-laboral
-router.get('/categoria-laboral', /*isLoggedIn,*/  confController.listCategoriaLaboral)
-
-/* POST CATEGORIA LABORAL */
-router.post('/categoria-laboral/new', /*isLoggedIn,*/  confController.newCategoriaLaboral)
-
-// -- Edit Categoria
-router.get('/categoria-laboral/:id', /*isLoggedIn,*/  confController.getCategoriaById)
-
-router.post('/categoria-laboral/edit/:id', /*isLoggedIn,*/  confController.editCategoriaLaboral)
-
-// Eliminar Categoria Laboral
-router.get('/categoria-laboral/delete/:id', /*isLoggedIn,*/  confController.deleteCatLaboral)
-
 // /usuarios
 router.get('/usuarios', /*isLoggedIn,*/  confController.listUsuarios)
 

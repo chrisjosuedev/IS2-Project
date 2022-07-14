@@ -23,19 +23,10 @@ $(function () {
                 extend: 'excelHtml5',
                 text: '<i class="fas fa-file-excel"></i>',
                 titleAttr: 'Exportar a Excel',
-                title: 'Magistral Store',
+                title: 'IS2 Solutions',
                 messageTop: 'CLIENTES REGISTRADOS',
-                filename: 'Clientes de Magistral Store',
+                filename: 'Clientes de IS2 Solutions',
                 className: 'btn btn-success'
-            },
-            {
-                extend: 'pdfHtml5',
-                text: '<i class="fas fa-file-pdf"></i>',
-                titleAttr: 'Exportar a PDF',
-                title: 'Magistral Store',
-                filename: 'Clientes de Magistral Store',
-                messageTop: 'Clientes Registrados de Magistral Store',
-                className: 'btn btn-danger',
             }
         ]
     });

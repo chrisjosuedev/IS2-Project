@@ -23,7 +23,7 @@ $(function () {
                 extend: 'excelHtml5',
                 text: '<i class="fas fa-file-excel"></i>',
                 titleAttr: 'Exportar a Excel',
-                title: 'Magistral Store',
+                title: 'IS2 Solutions',
                 messageTop: 'ARTICULOS EN STOCK',
                 filename: 'Artículos en Inventario',
                 className: 'btn btn-success'

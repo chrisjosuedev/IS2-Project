@@ -23,9 +23,9 @@ $(function () {
                 extend: 'excelHtml5',
                 text: '<i class="fas fa-file-excel"></i>',
                 titleAttr: 'Exportar a Excel',
-                title: 'Magistral Store',
+                title: 'IS2 Solutions',
                 messageTop: 'USUARIOS DEL PORTAL ONLINE',
-                filename: 'Usuarios Magistral Store',
+                filename: 'Usuarios IS2 Solutions',
                 className: 'btn btn-success'
             }
         ]
