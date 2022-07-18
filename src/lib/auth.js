@@ -17,17 +17,15 @@ module.exports = {
     else {
         return next()
     }
-  }
-  
-  /*,
+  },
 
-  levelAccess(req, res, next){
-    if (req.user.ID_ROL === 3) {
-        return res.send('<h1> No tiene accesso </h1>')
+  isUpdatedPassword(req, res, next) {
+    if (req.user.UPDATED) {
+      return next()
     } else {
-        return next()
+      return res.redirect('/recovery-password')
     }
   }
-  */
+  
 
 }
