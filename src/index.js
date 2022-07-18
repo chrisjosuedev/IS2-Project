@@ -78,10 +78,11 @@ app.use('/sys', require('./routes/sys'))
 // Public
 app.use(express.static(path.join(__dirname, 'public')))
 
-// 404 Error - Page not found
+/* 404 Error - Page not found
 app.get('*', isLoggedIn, (req, res) => {
     res.render('error/404')
 })
+*/
 
 app.listen(app.get('port'), () => {
     console.log('Server on Port', app.get('port'))

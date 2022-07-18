@@ -8,7 +8,7 @@ const confController = {};
 // ---------------- USUARIOS
 
 confController.listUsuarios = async (req, res) => {
-  const userQuery = `SELECT usuario.USERNAME, rol_users.DESC_ROL, 
+  const userQuery = `SELECT usuario.*, rol_users.DESC_ROL, 
                         concat_ws(' ', persona.    NOMBRE_PERSONA, persona.APELLIDO_PERSONA) as NOMBRE_EMPLEADO
                         FROM usuario 
                         INNER JOIN rol_users ON rol_users.ID_ROL = usuario.ID_ROL
@@ -136,26 +136,10 @@ confController.deleteUsuario = async (req, res) => {
 };
 
 // -------- Mi Perfil
-confController.verMiPerfil = async (req, res) => {
-  const { id } = req.params;
 
-  const serQuery = `
-  SELECT persona.NOMBRE_PERSONA as NOMBRE, persona.APELLIDO_PERSONA as APELLIDO, 
-  persona.SEXO, usuario.*, rol_users.DESC_ROL as ROL,
-  categoria_laboral.DESCRIPCION_CATEGORIA, empleado.FECHA_CONTRATACION
-  FROM persona
-  left join empleado on persona.ID_PERSONA = empleado.ID_PERSONA
-  inner join usuario on usuario.ID_EMPLEADO = empleado.ID_EMPLEADO
-  inner join categoria_laboral on empleado.ID_CATEGORIA = categoria_laboral.ID_CATEGORIA
-  inner join rol_users on usuario.ID_ROL = rol_users.ID_ROL
-  WHERE (persona.ID_PERSONA IN (SELECT empleado.ID_PERSONA FROM empleado)) AND usuario.ID_EMPLEADO = ?
-  `
-  const user = await myConn.query(serQuery, [id]);
-
-  res.render("auth/mi-perfil", { 
-    user: user[0] 
-  });
-};
+confController.verPerfil = async (req, res) => {
+  res.render('auth/mi-perfil')
+}
 
 // ----- Cambiar Contraseña
 confController.getEditPerfil = async (req, res) => {
@@ -184,7 +168,7 @@ confController.EditPerfil = async (req, res) => {
 
   if (validPassword) {
     const newUser = {
-      password,
+      password
     };
 
     newUser.password = await helpers.encryptPassword(password);
@@ -199,6 +183,51 @@ confController.EditPerfil = async (req, res) => {
   } else {
     req.flash("error", "Contraseña anterior incorrecta");
     res.redirect(req.originalUrl);
+  }
+};
+
+confController.recoveryPassword = async (req, res) => {
+  const { username } = req.params;
+  const { password_old, password } = req.body;
+
+  console.log(username, password_old, password)
+
+  const rows = await myConn.query("SELECT * FROM usuario WHERE username = ?;", [
+    username
+  ]);
+  const user = rows[0];
+
+  const validPassword = await helpers.matchPassword(
+    password_old,
+    user.PASSWORD
+  )
+
+  if (validPassword) {
+    const newUser = {
+      password
+    };
+
+    newUser.password = await helpers.encryptPassword(password);
+
+    await myConn.query("UPDATE usuario set ? WHERE username = ?", [
+      newUser,
+      username
+    ]);
+
+    const newExpiracion = {
+      updated: true
+    }
+
+    await myConn.query("UPDATE expiracion_password set ? WHERE username = ?" , [
+      newExpiracion,
+      username
+    ])
+
+    req.flash('success', 'Bienvenid@ ' + user.USERNAME);
+    res.redirect("/dashboard");
+  } else {
+    req.flash("error", "Contraseña anterior incorrecta");
+    res.redirect('/recovery-password');
   }
 };
 

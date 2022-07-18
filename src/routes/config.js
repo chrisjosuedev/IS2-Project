@@ -23,10 +23,12 @@ router.get('/usuarios/:username',isLoggedIn, confController.getEmpleadoByUser)
 router.post('/usuarios/edit/:username',isLoggedIn, confController.editUser)
 
 // --------- PERFIL
-router.get('/mi-perfil/:id',isLoggedIn, confController.verMiPerfil)
+router.get('/mi-perfil', isLoggedIn, confController.verPerfil)
 
 router.get('/mi-perfil/edit/:username',isLoggedIn, confController.getEditPerfil)
 
 router.post('/mi-perfil/edit/:username',isLoggedIn, confController.EditPerfil)
+
+router.post('/recovery-password/:username', isLoggedIn, confController.recoveryPassword)
 
 module.exports = router

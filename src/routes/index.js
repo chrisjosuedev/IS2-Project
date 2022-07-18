@@ -32,8 +32,5 @@ router.get('/recovery-password', (req, res) => {
     res.render('auth/edit-password')
 })
 
-router.post('/recovery-password/:username', (req, res) => {
-    res.redirect('/')
-})
 
 module.exports = router

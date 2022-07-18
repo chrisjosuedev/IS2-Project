@@ -10,10 +10,7 @@ passport.use('local.signin', new localStrategy({
   passReqToCallback: true
 }, async (req, username, password, done) => {
   const queryUser = `
-  select usuario.*, expiracion_password.UPDATED 
-  from usuario 
-  inner join expiracion_password on expiracion_password.USERNAME = usuario.USERNAME
-  having USERNAME = ?;
+  select * from usuario ;
   `
   const rows = await myConn.query(queryUser, [username]);
   
@@ -40,13 +37,15 @@ passport.serializeUser((user, done) => {
 passport.deserializeUser(async (id, done) => {
   const serQuery = `
   SELECT persona.NOMBRE_PERSONA as NOMBRE, persona.APELLIDO_PERSONA as APELLIDO, 
-  usuario.*, expiracion_password.UPDATED
+  persona.SEXO, usuario.*, rol_users.DESC_ROL as ROL,
+  categoria_laboral.DESCRIPCION_CATEGORIA, empleado.FECHA_CONTRATACION, expiracion_password.UPDATED 
   FROM persona
   left join empleado on persona.ID_PERSONA = empleado.ID_PERSONA
   inner join usuario on usuario.ID_EMPLEADO = empleado.ID_EMPLEADO
+  inner join categoria_laboral on empleado.ID_CATEGORIA = categoria_laboral.ID_CATEGORIA
+  inner join rol_users on usuario.ID_ROL = rol_users.ID_ROL
   inner join expiracion_password on expiracion_password.USERNAME = usuario.USERNAME
-  WHERE (persona.ID_PERSONA IN (SELECT empleado.ID_PERSONA FROM empleado)) AND 
-  usuario.ID_EMPLEADO = ?;
+  WHERE (persona.ID_PERSONA IN (SELECT empleado.ID_PERSONA FROM empleado)) AND usuario.ID_EMPLEADO =  ? 
   `
   const rows = await myConn.query(serQuery, [id]);
   done(null, rows[0]);
