@@ -2,6 +2,23 @@ const { app, BrowserWindow, Menu } = require("electron");
 
 const server = require("./index");
 
+const templateMenu = [
+  {
+    label: 'Ajustes',
+    submenu: [
+      {
+        label: 'Salir',
+        accelerator: 'Ctrl+Q',
+        click() {
+          app.quit()
+        }
+      }
+    ]
+  }
+]
+
+const mainMenu = Menu.buildFromTemplate(templateMenu)
+
 let mainWindow;
 
 function createWindow() {
@@ -10,7 +27,7 @@ function createWindow() {
       nodeIntegration: true,
     },
     title: 'IS2 Solutions',
-    icon: __dirname + '/public/img/favicon.ico'
+    icon: __dirname + '/public/img/favicon/favicon.ico'
   });
 
   mainWindow.loadURL("http://localhost:3000");
@@ -19,6 +36,7 @@ function createWindow() {
   });
   mainWindow.maximize()
   Menu.setApplicationMenu(mainMenu)
+  
 }
 
 app.on("ready", createWindow);
@@ -40,7 +58,3 @@ app.on("activate", function () {
   }
   
 });
-
-
-
-
