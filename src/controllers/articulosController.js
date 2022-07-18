@@ -5,21 +5,21 @@ const artController = {}
 
 // Articulos Listar 
 artController.listArticulos = async (req, res) => {
-    const queryArt = `SELECT articulos.*, marca.NOMBRE_MARCA, linea_articulo.DESC_LINEA, color_articulo.DESC_COLOR
+    const queryArt = `SELECT articulos.*, marca.NOMBRE_MARCA, tipo_articulos.NOMBRE_TIPOARTICULO, descuentos.PORCENTAJE
     FROM articulos
     INNER JOIN marca ON marca.ID_MARCA = articulos.ID_MARCA
-    INNER JOIN linea_articulo ON linea_articulo.ID_LINEA_ARTICULO = articulos.ID_LINEA_ARTICULO
-    INNER JOIN color_articulo ON color_articulo.ID_COLOR = articulos.ID_COLOR
+    INNER JOIN tipo_articulos ON tipo_articulos.ID_TIPOARTICULO = articulos.ID_TIPOARTICULO
+    INNER JOIN descuentos ON descuentos.ID_DESCUENTO = articulos.ID_DESCUENTO
     GROUP BY articulos.ID_ARTICULO
     ORDER BY articulos.ID_ARTICULO ASC;`
     const articulos = await myConn.query(queryArt)
 
     // Consultas para Selects
-    const color = await myConn.query("SELECT * FROM color_articulo")
+    const tipo_articulos = await myConn.query("SELECT * FROM tipo_articulos")
     const marca = await myConn.query("SELECT * FROM marca")
-    const linea_articulo = await myConn.query("SELECT * FROM linea_articulo")
+    const descuentos = await myConn.query("SELECT * FROM descuentos")
 
-    res.render('articulos/items', { articulos, color, marca, linea_articulo })
+    res.render('articulos/items', { articulos, descuentos, marca, tipo_articulos })
 }
 
 /* GET ARTICULO POR ID */
@@ -32,6 +32,63 @@ artController.getArtById = async (req, res) => {
 }
 
 /* ------------- FIN ARTICULOS ------------- */
+
+// Tipos
+artController.listTipos = async (req, res) => {
+    const tipos = await myConn.query("SELECT * FROM tipo_articulos;")
+    res.render('articulos/tipos', { tipos })
+}
+
+artController.newTipos = async (req, res) => {
+    const { nombre_tipoarticulo } = req.body
+
+    const newTipo = {
+        nombre_tipoarticulo
+    }
+
+    await myConn.query("INSERT INTO tipo_articulos set ?", [newTipo])
+
+    req.flash("success", "Tipo de Articulo Agregado Correctamente")
+
+    res.redirect('/articulos/tipos')
+}
+
+artController.getTipoById = async (req, res) => {
+    const { id } = req.params
+    const tipos = await myConn.query("SELECT * FROM tipo_articulos WHERE id_tipoarticulo = ?", [id])
+    res.json(tipos)
+}
+
+artController.editTipos = async (req, res) => {
+    const { id } = req.params;
+    const { nombre_tipoarticulo } = req.body;
+    const newTipo = {
+        nombre_tipoarticulo
+    }
+
+    await myConn.query("UPDATE tipo_articulos set ? WHERE id_tipoarticulo = ?", [
+        newTipo,
+        id,
+    ])
+
+    req.flash("success", "Tipo de Articulo Actualizado Correctamente");
+    res.redirect("/articulos/tipos");
+}
+
+artController.deleteTipos = async (req, res) => {
+    const { id } = req.params;
+    await myConn.query("DELETE FROM tipo_articulos WHERE id_tipoarticulo = ?", [id], (error, results) => {
+        if (error) {
+            req.flash("warning", "El tipo de Articulo seleccionado no puede ser eliminada");
+            res.redirect("/articulos/tipos");
+        }
+        else {
+            req.flash("success", "Tipo de Articulo Eliminado Correctamente");
+            res.redirect("/articulos/tipos");   
+        }
+    });
+    
+}
 
 // Marcas Listar
 artController.listMarcas = async (req, res) => {

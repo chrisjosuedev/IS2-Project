@@ -16,30 +16,17 @@
             <div class="form-group col-md-6">
               <label for="marca"> Marca </label>
               <select id="marca" name="id_marca" class="custom-select" required>
-                {{!-- {{#each marca}}
+                {{#each marca}}
                 <option value="{{ID_MARCA}}"> {{NOMBRE_MARCA}}</option>
-                {{/each}} --}}
-                <option value=""> - Seleccionar - </option>
+                {{/each}}
               </select>
             </div>
             <div class="form-group col-md-6">
               <label for="linea"> Tipo de Articulo </label>
-              <select id="linea" name="id_linea_articulo" class="custom-select" required>
-                {{!-- {{#each linea_articulo}}
-                <option value="{{ID_LINEA_ARTICULO}}"> {{DESC_LINEA}}</option>
-                {{/each}} --}}
-                <option value=""> - Seleccionar - </option>
-              </select>
-            </div>
-          </div>
-          <div class="form-row">
-            <div class="form-group col-md-6">
-              <label for="color"> Genero </label>
-              <select id="color" name="id_color" class="custom-select" required>
-                {{!-- {{#each color}}
-                <option value="{{ID_COLOR}}"> {{DESC_COLOR}}</option>
-                {{/each}} --}}
-                <option value=""> - Seleccionar - </option>
+              <select id="linea" name="id_tipoarticulos" class="custom-select" required>
+                {{#each tipo_articulos}}
+                <option value="{{ID_TIPOARTICULO}}"> {{NOMBRE_TIPOARTICULO}}</option>
+                {{/each}}
               </select>
             </div>
           </div>
@@ -50,12 +37,11 @@
               name="precio_unit" placeholder="Precio" required>
             </div>
             <div class="form-group col-md-6">
-              <label for="color"> Aplicar Descuento </label>
-              <select id="color" name="id_color" class="custom-select" required>
-                {{!-- {{#each color}}
-                <option value="{{ID_COLOR}}"> {{DESC_COLOR}}</option>
-                {{/each}} --}}
-                <option value=""> - Seleccionar - </option>
+              <label for="descuento"> Aplicar Descuento </label>
+              <select id="descuento" name="id_descuento" class="custom-select" required>
+                {{#each descuentos}}
+                <option value="{{ID_DESCUENTO}}"> {{PORCENTAJE}} % </option>
+                {{/each}}
               </select>
             </div>      
           </div>

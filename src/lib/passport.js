@@ -10,14 +10,16 @@ passport.use('local.signin', new localStrategy({
   passReqToCallback: true
 }, async (req, username, password, done) => {
   const queryUser = `
-  select * from usuario where USERNAME = ?;
+  select usuario.*, expiracion_password.UPDATED 
+  from usuario 
+  inner join expiracion_password on expiracion_password.USERNAME = usuario.USERNAME
+  having USERNAME = ?;
   `
   const rows = await myConn.query(queryUser, [username]);
   
   // Validacion de Contraseña
   if (rows.length > 0) {
       const user = rows[0];
-      console.log(user)
       const validPassword = await helpers.matchPassword(password, user.PASSWORD);
       if (validPassword) {
           done(null, user, req.flash('success', 'Bienvenid@ ' + user.USERNAME));
@@ -38,12 +40,13 @@ passport.serializeUser((user, done) => {
 passport.deserializeUser(async (id, done) => {
   const serQuery = `
   SELECT persona.NOMBRE_PERSONA as NOMBRE, persona.APELLIDO_PERSONA as APELLIDO, 
-  usuario.*
+  usuario.*, expiracion_password.UPDATED
   FROM persona
   left join empleado on persona.ID_PERSONA = empleado.ID_PERSONA
   inner join usuario on usuario.ID_EMPLEADO = empleado.ID_EMPLEADO
+  inner join expiracion_password on expiracion_password.USERNAME = usuario.USERNAME
   WHERE (persona.ID_PERSONA IN (SELECT empleado.ID_PERSONA FROM empleado)) AND 
-  usuario.ID_EMPLEADO = ?
+  usuario.ID_EMPLEADO = ?;
   `
   const rows = await myConn.query(serQuery, [id]);
   done(null, rows[0]);

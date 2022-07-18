@@ -1,5 +1,8 @@
+require('dotenv').config()
 const myConn = require("../db");
 const helpers = require("../lib/helpers");
+const nodemailer = require('nodemailer')
+const generatePassword = require('generate-password')
 const confController = {};
 
 // ---------------- USUARIOS
@@ -21,19 +24,64 @@ confController.listUsuarios = async (req, res) => {
 
 /** POST NUEVO USUARIO **/
 confController.newUsuario = async (req, res) => {
-  const { id_empleado, username, password, id_rol } = req.body;
+  const { username, id_empleado, email_user, id_rol } = req.body;
+
+  console.log(username)
+
+  const password = generatePassword.generate({
+    length: 8,
+    strict: true
+  })
+
+  // Contenido a Enviar por Email
+  contentHTML = `
+  <h1> ¡Bienvenido al Equipo! </h1>
+  <p> Las credenciales de acceso al sistema son: </p> 
+  <ul> 
+    <li> Username: ${username} </li>
+    <li> Password: ${password} </li>
+  </ul>
+  <p> Recuerde cambiar su contraseña en el siguiente inicio de sesión. </p>
+  `
+
   const newUser = {
-    id_empleado,
     username,
+    id_empleado,
+    email_user,
     password,
-    id_rol,
+    id_rol
   };
 
   // Cifrar Contraseña
   newUser.password = await helpers.encryptPassword(password);
 
   await myConn.query("INSERT INTO usuario set ?", [newUser]);
-  req.flash("success", "Usuario Guardado Correctamente");
+
+  const expPass = {
+    username,
+    updated: false
+  }
+
+  await myConn.query("INSERT INTO expiracion_password set ?", [expPass])
+
+
+  // Envio de Credenciales
+  const transporter = nodemailer.createTransport({
+    service: 'hotmail',
+    auth: {
+      user: process.env.EMAIL,
+      pass: process.env.PASSWORD_EMAIL
+    }
+  })
+
+  const info = await transporter.sendMail({
+    from: `'IS2 Solutions' <${process.env.EMAIL}>`,
+    to: email_user,
+    subject: 'Credenciales de Usuario',
+    html: contentHTML
+  })
+
+  req.flash("success", "Usuario e Informacion Enviada Correctamente");
   res.redirect("/config/usuarios");
 };
 

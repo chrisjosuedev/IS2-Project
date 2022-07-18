@@ -13,9 +13,12 @@ $(function() {
     
 
     const formusers = $('#users_form')
+    
     const guardarUsuario = $('#saveUsuario')
 
     const deleteUsuario = $('.delete-user')
+
+    const generateUsuario = $('#btn-username')
     
     // ----- Eliminar Usuario
     function confirmarDelete(id) {
@@ -54,47 +57,47 @@ $(function() {
     // ----------------- Agregar Usuario -------------------- //
     bEmp.on('click', function () {
         var id = idEmp.val()
-
-        $.ajax({
-            url: "/persona/empleados/" + id,
-            success: function (empleado) {
-                if (empleado.length === 0) {
-                    msgValidacion("Empleado no existe, ingrese el DNI correctamente.")
-                    $('#idEmp').focus()
-                    
-                }
-                else {
-                    if (empleado[0].PUESTO === 2) {
-                        msgValidacion("ADVERTENCIA: Al personal de seguridad no puede asignarsele un usuario, por favor intente con otro empleado.")
-                        $('#idEmp').val('')
-                        $('#idEmp').focus()
+        if (id === '') {
+            msgValidacion("Por favor, ingrese el DNI del empleado.")
+            $('#idEmp').focus() 
+        } else {
+            $.ajax({
+                url: "/persona/empleados/" + id,
+                success: function (empleado) {
+                    if (empleado.length === 0) {
+                        msgValidacion("Empleado no existe, ingrese el DNI correctamente.")
+                        $('#idEmp').focus() 
                     }
                     else {
-                        
-                        idCodEmp.val(empleado[0].ID_EMPLEADO)
-                    
-                        if (userId(idCodEmp.val())){
-                            // No tiene usuario
-                            idNameEmp.val(empleado[0].NOMBRE_PERSONA + ' ' + empleado[0].APELLIDO_PERSONA)
-                            $('#user').focus()
-                            guardarUsuario.attr('disabled', false)
+                        if (empleado[0].PUESTO === 2) {
+                            msgValidacion("ADVERTENCIA: Al personal de seguridad no puede asignarsele un usuario, por favor intente con otro empleado.")
+                            $('#idEmp').val('')
+                            $('#idEmp').focus()
                         }
                         else {
-                            // Tiene usuario
-                            idEmp.focus()
-                            msgValidacion("El empleado ya tiene un perfil registrado")
-
                             
+                            idCodEmp.val(empleado[0].ID_EMPLEADO)
+                        
+                            if (userId(idCodEmp.val())){
+                                // No tiene usuario
+                                idNameEmp.val(empleado[0].NOMBRE_PERSONA + ' ' + empleado[0].APELLIDO_PERSONA)
+                                $('#user').focus()
+                                guardarUsuario.attr('disabled', false)
+                            }
+                            else {
+                                // Tiene usuario
+                                idEmp.focus()
+                                msgValidacion("El empleado ya tiene un perfil registrado")
+    
+                                
+                            }
+    
                         }
-
                     }
+    
                 }
-
-            }
-        })
-
-        
-        
+            })  
+        }
     });
 
     // Verificar el disponibilidad del usuario
@@ -105,19 +108,11 @@ $(function() {
             async: false,
             success: function(res) {
                 if (res.length === 0) {
-                    user.removeClass('is-invalid')
-                    msg.addClass('valid-feedback')
-                    msg.text("Nombre de usuario disponible")
-                    user.addClass('is-valid')
-                    msg.removeClass('invalid-feedback')
+                    // NO existe
                     submitUsuario = true
                 }
                 else {
-                    user.addClass('is-invalid')
-                    user.removeClass('is-valid')
-                    msg.addClass('invalid-feedback')
-                    msg.text("Nombre de usuario no disponible")
-                    msg.removeClass('valid-feedback')
+                    // SI existe
                     submitUsuario = false
                 }
             }
@@ -196,24 +191,25 @@ $(function() {
         return rol
     }
 
-
-    // ------------------- Validar Envio de Formulario -------------
     
-
     formusers.submit(function(event) {
-        var idEmpleado = $('#codEmp').val()
+        // var idEmpleado = $('#codEmp').val()
 
-        if (verificarUsuario(user.val()) && verificarRol(idEmpleado)) {
+        if (verificarUsuario(user.val())) {
             return
         }
 
+        /*
         if (!verificarRol(idEmpleado)) {
             msgValidacion("El empleado no puede tener el control de acceso seleccionado.")
         }
+        */
+
         else if (!verificarUsuario(user.val())) {
             msgValidacion("Por favor, cambie el nombre de usuario.")
         }
         event.preventDefault()   
     })
+    
 
 })

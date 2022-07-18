@@ -49,70 +49,7 @@
 </head>
 
 <body id="page-top">
-
-    {{!--
     {{#if user}}
-
-    <div class="dash">
-        {{> sidebar }}
-        <div class="dash-app">
-            {{> navbar }}
-            <main class="dash-content">
-                {{> message }}
-                {{{ body }}}
-            </main>
-
-            <footer class="sticky-footer bg-white">
-                <div class="container my-auto">
-                    <div class="copyright text-center my-auto">
-                        <span>Derechos Reservados &copy; 2022</span>
-                    </div>
-                </div>
-            </footer>
-        </div>
-    </div>
-
-    {{else}}
-
-    <div class="dash login">
-        <main class="dash-content">
-            {{> message }}
-            {{{ body }}}
-        </main>
-
-    </div>
-
-    <footer class="sticky-footer bg-white">
-        <div class="container my-auto">
-            <div class="copyright text-center my-auto">
-                <span>Derechos Reservados &copy; 2022 </span>
-            </div>
-        </div>
-    </footer>
-
-
-    {{/if}}
-    --}}
-
-    {{!-- Login
-    <div class="dash login">
-        <main class="dash-content">
-            {{> message }}
-            {{{ body }}}
-        </main>
-
-    </div>
-
-    <footer class="sticky-footer bg-white">
-        <div class="container my-auto">
-            <div class="copyright text-center my-auto">
-                <span>Derechos Reservados &copy; 2022 </span>
-            </div>
-        </div>
-    </footer>
-    --}}
-
-    {{!-- Temporary Main --}}
     <div id="wrapper">
         {{> sidebar }}
         <div id="content-wrapper" class="d-flex flex-column">
@@ -134,7 +71,23 @@
             </footer>
         </div>
     </div>
+    {{else}}
 
+    <div class="dash login">
+        <main class="dash-content">
+            {{> message }}
+            {{{ body }}}
+        </main>
+    </div>
+
+    <footer class="sticky-footer bg-white">
+        <div class="container my-auto">
+            <div class="copyright text-center my-auto">
+                <span>Derechos Reservados &copy; 2022 </span>
+            </div>
+        </div>
+    </footer>
+    {{/if}}
 
     {{!-- JQuery --}}
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"

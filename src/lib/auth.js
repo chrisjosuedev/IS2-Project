@@ -2,7 +2,11 @@ module.exports = {
 
   isLoggedIn(req, res, next) {
       if (req.isAuthenticated()) {
-          return next();
+        if (req.user.UPDATED) {
+            return next();
+        } else {
+            return res.redirect('/recovery-password')
+        }
       }
       else {
           return res.redirect('/')

@@ -4,7 +4,7 @@ const passport = require('passport')
 const { isLoggedInLogin } = require('../lib/auth')
 
 // Login
-router.get('/', /*isLoggedInLogin,*/ (req, res) => {
+router.get('/', isLoggedInLogin, (req, res) => {
     res.render('auth/signin')
 })
 
@@ -25,6 +25,15 @@ router.get('/logout', (req, res) => {
 // Forgot Password
 router.get('/loginHelp', (req, res) => {
     res.render('auth/forgot-password')
+})
+
+/* Recovery Password */
+router.get('/recovery-password', (req, res) => {
+    res.render('auth/edit-password')
+})
+
+router.post('/recovery-password/:username', (req, res) => {
+    res.redirect('/')
 })
 
 module.exports = router

@@ -9,24 +9,24 @@
                 <tr>
                     <th>ID</th>
                     <th>Descripción</th>
-                    <th>Talla</th>
                     <th>Marca</th>
-                    <th>Linea</th>
-                    <th>Color</th>
+                    <th>Tipo</th>
                     <th>Stock</th>
                     <th>Precio Unit.</th>
+                    <th>Descuento</th>
+                    <th></th>
                 </tr>
             </thead>
             <tfoot>
                 <tr>
                     <th>ID</th>
                     <th>Descripción</th>
-                    <th>Talla</th>
                     <th>Marca</th>
-                    <th>Linea</th>
-                    <th>Color</th>
+                    <th>Tipo</th>
                     <th>Stock</th>
                     <th>Precio Unit.</th>
+                    <th>Descuento</th>
+                    <th></th>
                 </tr>
             </tfoot>
             <tbody>
@@ -34,12 +34,11 @@
                 <tr>
                     <td> {{ID_ARTICULO}} </td>
                     <td> {{DESCRIPCION}} </td>
-                    <td> {{TALLA}} </td>
                     <td> {{NOMBRE_MARCA}} </td>
-                    <td> {{DESC_LINEA}} </td>
-                    <td> {{DESC_COLOR}} </td>
+                    <td> {{NOMBRE_TIPOARTICULO}} </td>
                     <td> {{STOCK}} </td>
                     <td> L. {{PRECIO_UNIT}} </td>
+                    <td> {{PORCENTAJE}} % </td>
                 </tr>
                 {{/each}}
             </tbody>

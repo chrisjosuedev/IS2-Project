@@ -48,9 +48,8 @@ app.use(sessions({
 }))
 
 app.use(flash())
-app.use(express.urlencoded({
-    extended: false
-}))
+app.use(express.urlencoded({ extended: false }))
+app.use(express.json())
 
 app.use(passport.initialize())
 app.use(passport.session())
@@ -80,7 +79,7 @@ app.use('/sys', require('./routes/sys'))
 app.use(express.static(path.join(__dirname, 'public')))
 
 // 404 Error - Page not found
-app.get('*', /* isLoggedIn, */ (req, res) => {
+app.get('*', isLoggedIn, (req, res) => {
     res.render('error/404')
 })
 

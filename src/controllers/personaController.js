@@ -124,15 +124,16 @@ personaController.deleteCliente = async (req, res) => {
 
 
 personaController.listEmpleados = async (req, res) => {
-    const empleadoQuery = `SELECT persona.ID_PERSONA, concat_ws(' ', persona.NOMBRE_PERSONA, persona.APELLIDO_PERSONA) as EMPLEADOS, 
-	(if(persona.SEXO = 1, 'F', 'M')) as SEXO, persona.CELULAR,
+    const empleadoQuery = `SELECT persona.ID_PERSONA, concat_ws(' ', persona.NOMBRE_PERSONA, persona.APELLIDO_PERSONA) as EMPLEADO, 
+    (if(persona.SEXO = 1, 'F', 'M')) as SEXO, persona.CELULAR,
     empleado.ID_EMPLEADO, 
     categoria_laboral.DESCRIPCION_CATEGORIA, categoria_laboral.SALARIO, empleado.FECHA_CONTRATACION 
     FROM persona 
     INNER JOIN empleado on persona.ID_PERSONA = empleado.ID_PERSONA
     INNER JOIN categoria_laboral on empleado.ID_CATEGORIA = categoria_laboral.ID_CATEGORIA
     INNER JOIN ciudad on persona.ID_CIUDAD = ciudad.ID_CIUDAD and ciudad.ID_DEPTO = persona.ID_DEPTO
-    INNER JOIN departamentos on persona.ID_DEPTO = departamentos.ID_DEPTO`
+    INNER JOIN departamentos on persona.ID_DEPTO = departamentos.ID_DEPTO
+    WHERE empleado.ESTATUS = 1;`
 
     const persona_empleado = await myConn.query(empleadoQuery)
 
@@ -174,7 +175,7 @@ personaController.newEmpleado = async (req, res) => {
     const newEmpleado = {
         id_persona,
         id_categoria,
-        fecha_contratacion,
+        fecha_contratacion
   }
 
   await myConn.query("INSERT INTO persona set ?", [newPersona])
